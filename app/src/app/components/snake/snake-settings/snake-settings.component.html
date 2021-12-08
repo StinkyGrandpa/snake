@@ -1,0 +1,30 @@
+<div class="  ">
+    <button class="  " (click)="closeSettings()" class="bg-yellow-100 p-1">abbrechen</button>
+</div>
+
+<form [formGroup]="settingsForm">
+    <div>
+        <label>Wie viele Äpfel brauchst du?</label>
+        <input type="range" formControlName="applesPerGame" min="1" max="9">
+        {{settingsForm.value['applesPerGame']}}
+    </div>
+    <div>
+        <label>Wie lang soll die Snake zu beginn sein?</label>
+        <input type="range" formControlName="snakeLength" min="1" max="9">
+        {{settingsForm.value['snakeLength']}}
+    </div>
+    <div>
+        <label>Um wie viele ELemente soll die Snake wachsen?</label>
+        <input type="range" formControlName="growPerApple" min="1" max="9">
+        {{settingsForm.value['growPerApple']}}
+    </div>
+    <div>
+        <label>Mit welcher geschwindigkeit willst du starten?</label>
+        <input type="range" formControlName="startSpeed" min="66" max="999">
+        {{settingsForm.value['startSpeed']}}
+    </div>
+    <div>
+        <button (click)="provideSettings()" class="bg-yellow-100 p-4"
+            [disabled]="settingsForm.invalid">Speichern</button>
+    </div>
+</form>

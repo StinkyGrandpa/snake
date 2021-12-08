@@ -1,0 +1,15 @@
+<div class="overflow-hidden mt-0 bg-gray-200">
+    <div class="flex justify-center">
+        <button class=" btn" (click)="playGame()" *ngIf="!play && alive">Start</button>
+        <button class=" btn" (click)="playGame()" *ngIf="play && alive">Stop</button>
+        <button class=" btn" (click)="newGame()" *ngIf="!alive">erneut Spielen!</button>
+        <button class=" btn " (click)="toggleSettings()">Settings</button>
+    </div>
+    <p class="score" *ngIf="!alive">Du hast {{eaten}} Äpfel gegessen!</p>
+    <canvas class="m-auto"></canvas>
+</div>
+<div class="backdrop" *ngIf="!showSettings">
+    <app-snake-settings [isSettings]="this.settings" (showSettings)="closeSettings()"
+        (getSettings)="getSettings($event)" class="text-center settings">
+    </app-snake-settings>
+</div>

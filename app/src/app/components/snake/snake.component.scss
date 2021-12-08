@@ -1,0 +1,48 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #CCC;
+    overflow: hidden;
+
+}
+
+canvas{
+    background-color: black;
+    width: 85vmin;
+    height: 85vmin;
+
+}
+
+.btn{
+    cursor: pointer;
+    margin: 2px 2px 2px 2px;
+    background-color: cadetblue;
+    padding: 10px;
+
+}
+.score{
+    margin-left: 50%;
+
+}
+
+.backdrop{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background: rgba(0,0,0,0.75);
+}
+
+.settings{
+    position: fixed;
+    top: 20vw;
+    width: 60vw;
+    left: 20vw;
+    padding: 30px;
+    background: peru;
+    box-shadow: 0px 3px 8px rgba(0,0,0,0.5);
+}
