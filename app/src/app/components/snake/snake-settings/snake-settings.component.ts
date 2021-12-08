@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SettingsService } from '../services/snake.service';
 import { Settings } from '../snakeGame/models';
 
 @Component({
@@ -9,16 +10,19 @@ import { Settings } from '../snakeGame/models';
 })
 export class SnakeSettingsComponent implements OnInit {
 
-  @Input() isSettings: Settings = { applesPerGame: 2, growPerApple: 1, snakeLength: 3, startSpeed: 200 };
+  //@Input() 
+  private isSettings: Settings = { applesPerGame: 2, growPerApple: 1, snakeLength: 3, startSpeed: 200 };
   @Output() showSettings: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() getSettings: EventEmitter<any> = new EventEmitter<any>();
 
   settingsForm: FormGroup;
 
   constructor(
-    public formBuilder: FormBuilder
+    public formBuilder: FormBuilder,
+    private settingsService: SettingsService
   ) {
     //console.log(this.isSettings)
+    this.isSettings = this.settingsService.getSettings();
     this.settingsForm = this.formBuilder.group({
       applesPerGame: formBuilder.control(this.isSettings.applesPerGame, [Validators.required, Validators.min(1), Validators.max(9)]),
       snakeLength: formBuilder.control(this.isSettings.snakeLength, [Validators.required, Validators.min(1), Validators.max(9)]),
@@ -43,6 +47,7 @@ export class SnakeSettingsComponent implements OnInit {
       growPerApple: this.settingsForm.value['growPerApple'],
       startSpeed: this.settingsForm.value['startSpeed']
     }
+    this.settingsService.setSettings(data)
     this.getSettings.emit(data)
   }
 

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SnakeComponent } from './snake.component';
 import { SnakeSettingsComponent } from './snake-settings/snake-settings.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SettingsService } from './services/snake.service';
 
 
 
@@ -17,11 +18,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
 
   ],
+  providers: [
+    SettingsService
+  ],
   exports: [
     SnakeComponent,
     SnakeSettingsComponent,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
   ]
 })
 export class SnakeModule { }
