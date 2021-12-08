@@ -181,6 +181,7 @@ export class Snake {
         this.unDraw()
 
         if (this.update()) {
+            this.draw()
             throw new Error(String(this.score))
         }
         this.draw()
